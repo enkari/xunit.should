@@ -116,6 +116,60 @@ namespace Xunit.Should
 			Assert.False(self, message);
 		}
 
+		public static void ShouldBeInRange<T>(this T self, T low, T high)
+		{
+			Assert.InRange(self, low, high);
+		}
+
+		public static void ShouldNotBeInRange<T>(this T self, T low, T high)
+		{
+			Assert.NotInRange(self, low, high);
+		}
+
+		public static void ShouldBeGreaterThan<T>(this T self, T other)
+			where T : IComparable<T>
+		{
+			Assert.True(self.CompareTo(other) > 0);
+		}
+
+		public static void ShouldBeGreaterThan<T>(this T self, T other, IComparer<T> comparer)
+		{
+			Assert.True(comparer.Compare(self, other) > 0);
+		}
+
+		public static void ShouldBeGreaterThanOrEqualTo<T>(this T self, T other)
+			where T : IComparable<T>
+		{
+			Assert.True(self.CompareTo(other) >= 0);
+		}
+
+		public static void ShouldBeGreaterThanOrEqualTo<T>(this T self, T other, IComparer<T> comparer)
+		{
+			Assert.True(comparer.Compare(self, other) >= 0);
+		}
+
+		public static void ShouldBeLessThan<T>(this T self, T other)
+			where T : IComparable<T>
+		{
+			Assert.True(self.CompareTo(other) < 0);
+		}
+
+		public static void ShouldBeLessThan<T>(this T self, T other, IComparer<T> comparer)
+		{
+			Assert.True(comparer.Compare(self, other) < 0);
+		}
+
+		public static void ShouldBeLessThanOrEqualTo<T>(this T self, T other)
+			where T : IComparable<T>
+		{
+			Assert.True(self.CompareTo(other) <= 0);
+		}
+
+		public static void ShouldBeLessThanOrEqualTo<T>(this T self, T other, IComparer<T> comparer)
+		{
+			Assert.True(comparer.Compare(self, other) <= 0);
+		}
+
 		public static void ShouldBeInstanceOf<T>(this object self)
 		{
 			Assert.IsType<T>(self);
